@@ -4,7 +4,12 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hali():
+def list_questions():
+    return render_template('list.html', question_list = import_from_file())
+
+
+@app.route('/addquestion')
+def render_question():
     return render_template('form.html')
 
 
@@ -22,7 +27,7 @@ def add_question():
     else:
         with open('questions.csv', 'a') as file_content:
             file_content.write(str(question_ID) + ", " + question_title + '\n')
-        return render_template('form.html', msg=question_title)
+        return render_template('list.html', question_list = import_from_file())
 
 
 def import_from_file(file_name="questions.csv"):

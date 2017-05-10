@@ -4,17 +4,22 @@
     <title>AskM8</title>
 </head>
 <body>
-    <table style="width:100%">
-  <tr>
-    <th>ID</th>
-    <th>Question</th> 
-    <th>Date/Time</th>
-  </tr>
-  <tr>
-    #<td>ID</td>
-    #<td>Question</td> 
-    #<th>Date/Time</th>
-  </tr>
-    </table>
+  <a href="{{ url_for("render_question") }}">
+  <button>Ask new question</button>
+  </a>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Question</th> 
+      <th>Date/Time</th>
+    </tr>
+    {%for list in question_list%}
+    <tr>
+      <td>{{list[0]}}</td>
+      <td>{{list[1]}}</td> 
+      <td>timestamp</td>
+    </tr>
+    {%endfor%}
+  </table>
 </body>
 </html>
