@@ -6,7 +6,10 @@
 <body>
     <h1>{{msg}}{{random_valtozo}}</h1>
     <form action="/question" method="POST">
-        <p><textarea name="question" rows="5" cols="42">Write here your heart's desire</textarea></p>
+        <h2><b>Question title<b></h2>
+        <p><input type= "text" name= "question_title" size="42"></p> 
+       <h2><b>Question description<b></h2>
+        <p><textarea aria-label="<i>Write here your little heart's desire</i>" name="question_description" rows="5" cols="42"></textarea></p>
         <p><input type="submit" value="submit"></p>
     </form>
 </body>
