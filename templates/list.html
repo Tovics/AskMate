@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>AskM8</title>
+  <title>AskM8</title>
 </head>
+
 <body>
-  <a href="{{ url_for("render_question") }}">
-  <button>Ask new question</button>
+  <a href="{{ url_for('render_question') }}">
+    <button>Ask new question</button>
   </a>
   <table>
     <tr>
       <th>ID</th>
-      <th>Question</th> 
+      <th>Question</th>
       <th>Date/Time</th>
     </tr>
     {%for list in question_list%}
     <tr>
       <td>{{list[0]}}</td>
-      <td>{{list[1]}}</td> 
+      <td><a href="{{ url_for('display_question') }}">{{list[1]}}</a></td>
       <td>timestamp</td>
     </tr>
     {%endfor%}
   </table>
 </body>
+
 </html>
