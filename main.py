@@ -14,7 +14,7 @@ def add_question():
         return render_template('form.html', msg='You should write longer idiot.')
     else:
         with open('questions.csv', 'a') as file_content:
-            file_content.write(question)
+            file_content.write(question + '\n')
         return render_template('form.html', msg='motherfucker')
 
 
