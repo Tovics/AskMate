@@ -22,7 +22,8 @@ def display_question(question_ID):
     for i in range(len(questions_list)):
         if questions_list[i][0] == question_ID:
             date = questions_list[i][3]
-    return render_template('display.html', question_ID=question_ID, date=date)
+            description = questions_list[i][2]
+    return render_template('display.html', question_ID=question_ID, date=date, description=description)
 
 
 @app.route("/question", methods=['POST'])
