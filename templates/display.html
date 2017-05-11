@@ -11,23 +11,13 @@
     </h2>
     <div style="height:100px; width:710px; border:1px solid;">{{description}}</div>
     <p align="center">{{date}}</p>
-
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Question</th>
-            <th>Date/Time</th>
-        </tr>
-        {%for list in question_list%}
+    <table border="1" style="width:710px;">
+        {%for list in answer_list%}
         <tr>
             <td>{{list[0]}}</td>
-            <td><a href="{{ url_for('display_question', question_ID=list[0]) }}">{{list[1]}}</a></td>
-            <td>{{list[3]}}</a>
-            </td>
         </tr>
         {%endfor%}
     </table>
-
     <p>Add a new answer:</p>
     <p>
         <form action="/question/{{question_ID}}" method="POST">
@@ -35,7 +25,6 @@
             <p><input type="submit" value="submit"></p>
         </form>
     </p>
-    {{answer}}
 
 </body>
 

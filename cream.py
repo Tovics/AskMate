@@ -19,18 +19,22 @@ def render_question():
 @app.route('/question/<question_ID>', methods=['GET', 'POST'])
 def display_question(question_ID):
 
+    filename = 'answer_' + str(question_ID) + '.csv'
     questions_list = import_from_file()
+    if os.path.isfile(filename) is True:
+        answer_list = import_from_file(filename)
+    else:
+        answer_list = []
     date = ""
     answer = ""
-    filename = 'answer_' + str(question_ID) + '.csv'
     if request.method == 'POST':
         answer = request.form["answer"]
         if os.path.isfile(filename) is True:
             with open(filename, "a") as file_content:
-                file_content.write(answer)
+                file_content.write(answer + '\n')
         else:
             with open(filename, "w") as file_content:
-                file_content.write(answer)
+                file_content.write(answer + '\n')
 
     for i in range(len(questions_list)):
         if questions_list[i][0] == question_ID:
@@ -38,7 +42,7 @@ def display_question(question_ID):
             description = questions_list[i][2]
             question_ID = questions_list[i][0]
             question_title = questions_list[i][1]
-    return render_template('display.html', question_ID=question_ID, date=date, description=description, answer=answer, question_title=question_title)
+    return render_template('display.html', question_ID=question_ID, date=date, description=description, answer=answer, question_title=question_title, answer_list=answer_list)
 
 
 @app.route("/question", methods=['POST'])
