@@ -9,7 +9,9 @@
   <a href="{{ url_for('render_question') }}">
     <button>Ask new question</button>
   </a>
-  <table>
+  <p>
+  <div align="center">
+  <table border="1">
     <tr>
       <th>ID</th>
       <th>Question</th>
@@ -23,6 +25,8 @@
     </tr>
     {%endfor%}
   </table>
+  </div>
+  </p>
 </body>
 
 </html>
