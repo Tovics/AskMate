@@ -27,7 +27,8 @@ def display_question(question_ID):
             date = questions_list[i][3]
             description = questions_list[i][2]
             question_ID = questions_list[i][0]
-    return render_template('display.html', question_ID=question_ID, date=date, description=description, answer=answer)
+            question_title = questions_list[i][1]
+    return render_template('display.html', question_ID=question_ID, date=date, description=description, answer=answer, question_title=question_title)
 
 
 @app.route("/question", methods=['POST'])
