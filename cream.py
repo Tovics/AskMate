@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import import_from_questions
 from datetime import datetime
+import os.path
 
 app = Flask(__name__)
 
@@ -17,11 +18,20 @@ def render_question():
 
 @app.route('/question/<question_ID>', methods=['GET', 'POST'])
 def display_question(question_ID):
+
     questions_list = import_from_file()
     date = ""
     answer = ""
+    filename = 'answer_' + str(question_ID) + '.csv'
     if request.method == 'POST':
         answer = request.form["answer"]
+        if os.path.isfile(filename) is True:
+            with open(filename, "a") as file_content:
+                file_content.write(answer)
+        else:
+            with open(filename, "w") as file_content:
+                file_content.write(answer)
+
     for i in range(len(questions_list)):
         if questions_list[i][0] == question_ID:
             date = questions_list[i][3]
