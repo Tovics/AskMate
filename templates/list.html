@@ -18,7 +18,7 @@
     {%for list in question_list%}
     <tr>
       <td>{{list[0]}}</td>
-      <td><a href="{{ url_for('display_question') }}">{{list[1]}}</a></td>
+      <td><a href="{{ url_for('display_question', question_ID=list[0]) }}">{{list[1]}}</a></td>
       <td>timestamp</td>
     </tr>
     {%endfor%}

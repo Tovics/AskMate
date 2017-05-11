@@ -13,11 +13,11 @@ def render_question():
     return render_template('form.html')
 
 
-@app.route('/display', methods=['POST'])
-def display_question():
+@app.route('/question/<question_ID>', methods=['GET'])
+def display_question(question_ID):
     questions_list = import_from_file()
 
-    return render_template('display.html')
+    return render_template('display.html', question_ID=question_ID)
 
 
 @app.route("/question", methods=['POST'])
