@@ -18,11 +18,15 @@ def render_question():
 @app.route('/question/<question_ID>', methods=['GET'])
 def display_question(question_ID):
     questions_list = import_from_file()
+    answer = request.form["answer"]
     date = ""
+    file_name = "question_" + str(question_ID) + ".csv"
     for i in range(len(questions_list)):
         if questions_list[i][0] == question_ID:
             date = questions_list[i][3]
             description = questions_list[i][2]
+    with open(file_name, "a") as file_content:
+      """  file_content.write(str(answer)
     return render_template('display.html', question_ID=question_ID, date=date, description=description)
 
 
