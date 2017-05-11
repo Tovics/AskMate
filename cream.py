@@ -31,7 +31,7 @@ def add_question():
     question_description = request.form["question_description"]
     questions_list = import_from_file()
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    if questions_list is None:
+    if questions_list == []:
         question_ID = 1
     else:
         question_ID = int(questions_list[len(questions_list) - 1][0]) + 1
