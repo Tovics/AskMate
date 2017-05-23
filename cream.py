@@ -23,18 +23,22 @@ def render_question():
 @app.route('/question/<question_id>', methods=['GET', 'POST'])
 def display_question(question_id):
     questions_details = sql_queries.import_single_question_from_db(question_id)
-    date = questions_details[0][1]
-    title = questions_details[0][4]
+    answer_details = sql_queries.import_answers_from_db(question_id)
+    question_date = questions_details[0][1]
+    question_title = questions_details[0][4]
     question_id = questions_details[0][0]
-    answer = ''
     question_description = questions_details[0][5]
+    answer_date = answer_details[0][1]
+    answer_message = answer_details[0][4]
+    answer_id = answer_details[0][0]
+    answer_votes = answer_details[0][2]
 
     if request.method == 'POST':
         answer = request.form["answer"]
-        return render_template('display.html', question_id=question_id, date=date, message=question_description, title=title)
+        sql_queries.insert_answer(question_id, answer)
+        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details)
     else:
-        sql_queries.insert_answer(date, vote_number=0, answer='', image='')
-        return render_template('display.html', question_id=question_id, date=date, message=question_description, title=title)
+        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details)
 
 
 @app.route("/question", methods=['POST'])

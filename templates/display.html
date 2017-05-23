@@ -7,14 +7,17 @@
 
 <body bgcolor="BDECB6">
     <h2>
-        <p align="left">{{question_id}}. {{question_title}}</p>
+        <p align="left">{{question_id}}. {{title}}</p>
     </h2>
     <div style="height:100px; width:710px; border:1px solid;">{{message}}</div>
     <p align="center">{{date}}</p>
     <table border="1" style="width:710px;">
-        {%for list in answer_list%}
+        {%for tupple in answer_details%}
         <tr>
-            <td>{{list[0]}}</td>
+            <td>{{tupple[0]}}</td>
+            <td>{{tupple[1]}}</td>
+            <td>{{tupple[2]}}</td>
+            <td>{{tupple[4]}}</td>
         </tr>
         {%endfor%}
     </table>
