@@ -47,17 +47,8 @@ def add_question():
     question_description = request.form["question_description"]
     # questions_list = import_from_file()
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    if questions_list == []:
-        question_id = 1
-    else:
-        question_id = int(questions_list[len(questions_list) - 1][0]) + 1
-    if len(question_title) < 10:
-        return render_template('form.html', msg='You should write longer question title! (Dumbass)')
-    else:
-        with open('questions.csv', 'a') as file_content:
-            file_content.write(str(question_id) + ", " + question_title +
-                               ", " + question_description + ", " + date + '\n')
-        return render_template('list.html', question_list=import_from_file())
+    sql_queries.insert_question(question_title, question_description)
+    return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 
 
 """def import_from_file(file_name="questions.csv"):

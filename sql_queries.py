@@ -33,6 +33,17 @@ def import_single_question_from_db(question_id):
     return question
 
 
+def insert_question(title='', message='', view_number=0, vote_number=0, image=''):
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    conn = psycopg2.connect(connect_str)
+    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute("""INSERT INTO question (submission_time, view_number, vote_number, title, message, image)
+                            VALUES (%s, %s, %s, %s, %s, %s);""", (date, view_number, vote_number, title, message, image))
+
+
+
 def insert_answer(question_id, answer='', vote_number=0, image=''):
     connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
     conn = psycopg2.connect(connect_str)
@@ -44,8 +55,7 @@ def insert_answer(question_id, answer='', vote_number=0, image=''):
 
 
 def main():
-    import_questions_from_db()
-    print(import_answers_from_db(0))
+    pass
 
 
 if __name__ == '__main__':
