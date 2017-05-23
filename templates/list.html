@@ -15,12 +15,14 @@
       <th><center>ID</center></th>
       <th><center>Question</center></th>
       <th><center>Date/Time</center></th>
+      <th><center></center></th>
     </tr>
-    {%for list in question_list%}
+    {%for tupple in question_list%}
     <tr>
-      <td><center>{{list[0]}}</center></td>
-      <td><a href="{{ url_for('display_question', question_ID=list[0]) }}">{{list[1]}}</a></td>
-      <td><center>{{list[3]}}</center></td>
+      <td><center>{{tupple[0]}}</center></td>
+      <td><a href="{{ url_for('display_question', question_ID=tupple[0]) }}">{{tupple[1]}}</a></td>
+      <td><center>{{tupple[3]}}</center></td>
+      <td><center>edit delete</center></td>
     </tr>
     {%endfor%}
   </table>

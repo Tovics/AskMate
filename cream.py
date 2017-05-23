@@ -2,13 +2,17 @@ from flask import Flask, request, render_template
 import import_from_questions
 from datetime import datetime
 import os.path
+import base64
+import psycopg2
+import sql_queries
+
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def list_questions():
-    return render_template('list.html', question_list=import_from_file())
+    return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 
 
 @app.route('/addquestion')
