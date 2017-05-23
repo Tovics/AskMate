@@ -40,7 +40,7 @@ def insert_answer(question_id, answer='', vote_number=0, image=''):
     conn.autocommit = True
     cursor = conn.cursor()
     cursor.execute("""INSERT INTO answer (submission_time, vote_number, question_id, message, image)
-                            VALUES (%s, %s, %s, %s);""", (date, vote_number, question_id, answer, image))
+                            VALUES (%s, %s, %s, %s, %s);""", (date, vote_number, question_id, answer, image))
 
 
 def main():

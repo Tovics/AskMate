@@ -26,7 +26,7 @@ def display_question(question_id):
     answer_details = sql_queries.import_answers_from_db(question_id)
     question_date = questions_details[0][1]
     question_title = questions_details[0][4]
-    question_id = questions_details[0][0]
+    question_id = int(questions_details[0][0])
     question_description = questions_details[0][5]
     answer_date = answer_details[0][1]
     answer_message = answer_details[0][4]
