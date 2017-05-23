@@ -10,22 +10,36 @@
     <button>Ask new question</button>
   </a>
   <p>
-  <table border="1" align="center" style="width:75%">
-    <tr>
-      <th><center>ID</center></th>
-      <th><center>Question</center></th>
-      <th><center>Date/Time</center></th>
-      <th><center></center></th>
-    </tr>
-    {%for tupple in question_list%}
-    <tr>
-      <td><center>{{tupple[0]}}</center></td>
-      <td><a href="{{ url_for('display_question', question_ID=tupple[0]) }}">{{tupple[1]}}</a></td>
-      <td><center>{{tupple[3]}}</center></td>
-      <td><center>edit delete</center></td>
-    </tr>
-    {%endfor%}
-  </table>
+    <table border="1" align="center" style="width:75%">
+      <tr>
+        <th>
+          <center>ID</center>
+        </th>
+        <th>
+          <center>Question</center>
+        </th>
+        <th>
+          <center>Date/Time</center>
+        </th>
+        <th>
+          <center></center>
+        </th>
+      </tr>
+      {%for tupple in question_list%}
+      <tr>
+        <td>
+          <center>{{tupple[0]}}</center>
+        </td>
+        <td><a href="{{ url_for('display_question', question_id=tupple[0]) }}">{{tupple[1]}}</a></td>
+        <td>
+          <center>{{tupple[3]}}</center>
+        </td>
+        <td>
+          <center>edit delete</center>
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
   </p>
 </body>
 
