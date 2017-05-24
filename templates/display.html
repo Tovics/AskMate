@@ -12,14 +12,22 @@
     <div style="height:100px; width:710px; border:1px solid;">{{message}}</div>
     <p align="center">{{date}}</p>
     <table border="1" style="width:710px;">
-        {%for tupple in answer_details%}
-        <tr>
-            <td>{{tupple[0]}}</td>
-            <td>{{tupple[1]}}</td>
-            <td>{{tupple[2]}}</td>
-            <td>{{tupple[4]}}</td>
-        </tr>
-        {%endfor%}
+        {%if answer_details%}
+            {%for tupple in answer_details%}
+            <tr>
+                <td>{{tupple[0]}}</td>
+                <td>{{tupple[1]}}</td>
+                <td>{{tupple[2]}}</td>
+                <td>{{tupple[4]}}</td>
+            </tr>
+            {%endfor%}
+        {%else%}
+            <tr>
+                <td>
+                    Existence is pain
+                </td>
+            </tr>
+        {%endif%}
     </table>
     <p>Add a new answer:</p>
     <p>
