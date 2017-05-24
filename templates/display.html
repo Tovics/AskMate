@@ -16,15 +16,16 @@
             {%for tupple in answer_details%}
             <tr>
                 <td>{{tupple[0]}}</td>
+                <td>{{tupple[4]}}</td>
                 <td>{{tupple[1]}}</td>
                 <td>{{tupple[2]}}</td>
-                <td>{{tupple[4]}}</td>
+                <td><a href="{{url_for('delete_answer', question_id=question_id, answer_id=tupple[0])}}">delete</a></td>
             </tr>
             {%endfor%}
         {%else%}
             <tr>
                 <td>
-                    Existence is pain
+                    Seems like your question hasn't been answered yet. Oh wait... EXISTENCE IS PAIN.
                 </td>
             </tr>
         {%endif%}

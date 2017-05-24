@@ -38,6 +38,21 @@ def edit_question(question_id):
     return render_template('form.html', question_details=question_details)
 
 
+@app.route('/delete_question/<question_id>', methods=['GET', 'POST'])
+def delete_question(question_id):
+    question_id = int(question_id)
+    sql_queries.delete_question(question_id)
+    return redirect(url_for('list_questions'))
+
+
+@app.route('/delete_answer/<question_id>', methods=['GET', 'POST'])
+def delete_answer(question_id, answer_id):
+    question_id = int(question_id)
+    answer_id = int(answer_id)
+    sql_queries.delete_answer(question_id, answer_id)
+    return redirect(url_for('list_questions'))
+
+
 @app.route('/question/<question_id>', methods=['GET', 'POST'])
 def display_question(question_id):
     questions_details = sql_queries.import_single_question_from_db(question_id)

@@ -37,7 +37,7 @@
           <center>{{tupple[1]}}</center>
         </td>
         <td>
-          <center><a href="{{ url_for('edit_question', question_id=tupple[0]) }}">edit</a> delete</center>
+          <center><a href="{{ url_for('edit_question', question_id=tupple[0]) }}">edit</a> <a href="{{url_for('delete_question', question_id=tupple[0])}}">delete</a></center>
         </td>
       </tr>
       {%endfor%}
