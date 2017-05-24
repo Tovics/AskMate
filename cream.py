@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 import import_from_questions
 from datetime import datetime
 import os.path
@@ -26,6 +26,16 @@ def list_questions():
 @app.route('/addquestion')
 def render_question():
     return render_template('form.html')
+
+
+@app.route('/edit_question/<question_id>', methods=['GET', 'POST'])
+def edit_question(question_id):
+    question_id = int(question_id)
+    question_details = sql_queries.import_single_question_from_db(question_id)
+    if request.method == 'POST':
+        sql_queries.update_question(question_id, request.form['question_title'], request.form['question_description'])
+        return redirect(url_for('list_questions'))
+    return render_template('form.html', question_details=question_details)
 
 
 @app.route('/question/<question_id>', methods=['GET', 'POST'])
