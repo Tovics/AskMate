@@ -13,19 +13,15 @@
     <table border="1" align="center" style="width:75%">
       <tr>
         <th>
-          <center>ID
-            <a><button>le</button></a>
-            <button>fel</button>
-          </center>
+          <center>ID</center>
         </th>
         <th>
           <center>Question</center>
         </th>
         <th>
           <center>Date/Time</center>
-          <a href="{{ url_for('list_questions', sort_by = 'date_desc') }}">
-            <button name="sort_type"> <img src="https://image.freepik.com/free-icon/sort-arrows-couple-pointing-up-and-down_318-42272.jpg" style="width:10px;height:10px";>
-          </a>
+          <a href="{{ url_for('list_questions', submission_time='desc')}}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-128.png" style="width:15px;height:15px;"></a>
+          <a href="{{ url_for('list_questions', submission_time='asc')}}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png" style="width:15px;height:15px;"></a>
         </th>
         <th>
           <center></center>

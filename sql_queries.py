@@ -53,22 +53,12 @@ def insert_answer(question_id, answer='', vote_number=0, image=''):
                             VALUES (%s, %s, %s, %s, %s);""", (date, vote_number, question_id, answer, image))
 
 
-def sort_questions_desc(sort_by):
+def sort_questions(criterium, ordering):
     connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
-    cursor.execute("""SELECT * FROM question ORDER BY submission_time DESC;""")
-    sort = cursor.fetchall()
-    return sort
-
-
-def sort_questions_asc(sort_by):
-    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
-    conn = psycopg2.connect(connect_str)
-    conn.autocommit = True
-    cursor = conn.cursor()
-    cursor.execute("""SELECT * FROM question ORDER BY submission_time ASC;""")
+    cursor.execute("""SELECT * FROM question ORDER BY {} {};""".format(criterium, ordering))
     sort = cursor.fetchall()
     return sort
 

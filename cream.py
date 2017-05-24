@@ -11,13 +11,16 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def list_questions(sort_by='id'):
-    if sort_by == 'date_desc':
-        ordered_desc = sql_queries.sort_questions_desc(sort_by)
-        return render_template('list.html', question_list=ordered_desc)
-    else:
-        ordered_desc = sql_queries.sort_questions_asc(sort_by)
-        return render_template('list.html', question_list=ordered_desc)
+def list_questions():
+    criterium = None
+    ordering = None
+    ordered = sql_queries.import_questions_from_db()
+    for key in request.args:
+        criterium = key
+        ordering = request.args[key]
+    if criterium and ordering:
+        ordered = sql_queries.sort_questions(criterium, ordering)
+    return render_template('list.html', question_list=ordered)
 
 
 @app.route('/addquestion')
