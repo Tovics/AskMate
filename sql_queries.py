@@ -43,15 +43,24 @@ def insert_question(title='', message='', view_number=0, vote_number=0, image=''
                             VALUES (%s, %s, %s, %s, %s, %s);""", (date, view_number, vote_number, title, message, image))
 
 
-
 def insert_answer(question_id, answer='', vote_number=0, image=''):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn.autocommit = True
     cursor = conn.cursor()
     cursor.execute("""INSERT INTO answer (submission_time, vote_number, question_id, message, image)
                             VALUES (%s, %s, %s, %s, %s);""", (date, vote_number, question_id, answer, image))
+
+
+def sort_questions_asc(sort_by):
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
+    conn = psycopg2.connect(connect_str)
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM question ORDER BY submission_time ASC;""", (question_id,))
+    sort = cursor.fetchall()
+    return sort
 
 
 def main():
