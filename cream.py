@@ -28,10 +28,6 @@ def display_question(question_id):
     question_title = questions_details[0][4]
     question_id = int(questions_details[0][0])
     question_description = questions_details[0][5]
-    answer_date = answer_details[0][1]
-    answer_message = answer_details[0][4]
-    answer_id = answer_details[0][0]
-    answer_votes = answer_details[0][2]
 
     if request.method == 'POST':
         answer = request.form["answer"]

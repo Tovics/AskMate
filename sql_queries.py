@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def import_questions_from_db():
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -13,7 +13,7 @@ def import_questions_from_db():
 
 
 def import_answers_from_db(question_id):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -24,7 +24,7 @@ def import_answers_from_db(question_id):
 
 
 def import_single_question_from_db(question_id):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -34,7 +34,7 @@ def import_single_question_from_db(question_id):
 
 
 def insert_question(title='', message='', view_number=0, vote_number=0, image=''):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
     conn = psycopg2.connect(connect_str)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn.autocommit = True
