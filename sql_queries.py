@@ -45,7 +45,7 @@ def insert_question(title='', message='', view_number=0, vote_number=0, image=''
 
 
 def insert_answer(question_id, answer='', vote_number=0, image=''):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
     conn = psycopg2.connect(connect_str)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn.autocommit = True

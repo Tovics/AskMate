@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import import_from_questions
 from datetime import datetime
 import os.path
@@ -32,7 +32,7 @@ def display_question(question_id):
     if request.method == 'POST':
         answer = request.form["answer"]
         sql_queries.insert_answer(question_id, answer)
-        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details)
+        return redirect('/question/{}'.format(question_id))
     else:
         return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details)
 
