@@ -105,7 +105,7 @@ def search_in_questions(search_request):
 
 
 def vote_up(question_id):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -117,7 +117,7 @@ def vote_up(question_id):
 
 
 def vote_down(question_id):
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()

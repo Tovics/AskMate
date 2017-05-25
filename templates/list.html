@@ -19,8 +19,7 @@
       </p>
   </p>
   </form>
-
-  <table border="1 " align="center " style="width:75% ">
+  <table border="1" align="center" style="width:75%">
     <tr>
       <th>
         <center>ID</center>
@@ -29,51 +28,39 @@
         <center>Question</center>
       </th>
       <th>
+        <center>Votes</center>
+      </th>
+      <th>
         <center>Date/Time</center>
-        <a href="{{ url_for( 'list_questions', submission_time='desc' )}} ">
-          <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-128.png
-      " style="width:15px;height:15px; "></a>
-        <a href="{{ url_for( 'list_questions', submission_time='asc' )}} ">
-          <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png
-      " style="width:15px;height:15px; "></a>
+        <a href="{{ url_for('list_questions', submission_time='desc')}}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-128.png" style="width:15px;height:15px;"></a>
+        <a href="{{ url_for('list_questions', submission_time='asc')}}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png" style="width:15px;height:15px;"></a>
       </th>
       <th>
         <center></center>
       </th>
     </tr>
-    {%if search_results%} {%for tupple in search_results%}
+    {%for tupple in question_list%}
     <tr>
       <td>
         <center>{{tupple[0]}}</center>
       </td>
-      <td><a href="{{ url_for( 'display_question', question_id=tupple[0]) }} ">{{tupple[4]}}</a></td>
+      <td>
+        <a href="{{ url_for('display_question', question_id=tupple[0]) }}">{{tupple[4]}}</a>
+      </td>
+      <td>
+        <center>{{tupple[3]}}
+          <a href="{{ url_for('vote_up', question_id=tupple[0]) }}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png" style="width:15px;height:15px;"></a>
+          <a href="{{ url_for('vote_down', question_id=tupple[0] )}}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-128.png" style="width:15px;height:15px;"></a>
+        </center>
+      </td>
       <td>
         <center>{{tupple[1]}}</center>
       </td>
       <td>
-        <center><a href="{{ url_for( 'edit_question', question_id=tupple[0]) }} ">edit</a>
-          <a href="{{url_for(
-        'delete_question', question_id=tupple[0])}} ">delete</a>
-        </center>
+        <center><a href="{{ url_for('edit_question', question_id=tupple[0]) }}">edit</a> <a href="{{url_for('delete_question', question_id=tupple[0])}}">delete</a></center>
       </td>
     </tr>
-    {%endfor%} {%else%} {%for tupple in question_list%}
-    <tr>
-      <td>
-        <center>{{tupple[0]}}</center>
-      </td>
-      <td><a href="{{ url_for( 'display_question', question_id=tupple[0]) }} ">{{tupple[4]}}</a></td>
-      <td>
-        <center>{{tupple[1]}}</center>
-      </td>
-      <td>
-        <center><a href="{{ url_for( 'edit_question', question_id=tupple[0]) }} ">edit</a>
-          <a href="{{url_for(
-        'delete_question', question_id=tupple[0])}} ">delete</a>
-        </center>
-      </td>
-    </tr>
-    {%endfor%} {%endif%}
+    {%endfor%}
   </table>
   </p>
 </body>
