@@ -104,6 +104,30 @@ def search_in_questions(search_request):
     return search_results
 
 
+def vote_up(question_id):
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+    conn = psycopg2.connect(connect_str)
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute("""SELECT vote_number FROM question WHERE id={};""".format(question_id))
+    vote_number = cursor.fetchone()
+    vote_number = int(vote_number[0])
+    vote_number += 1
+    cursor.execute("""UPDATE question SET vote_number='{}' WHERE id={};""".format(vote_number, question_id))
+
+
+def vote_down(question_id):
+    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+    conn = psycopg2.connect(connect_str)
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute("""SELECT vote_number FROM question WHERE id={};""".format(question_id))
+    vote_number = cursor.fetchone()
+    vote_number = int(vote_number[0])
+    vote_number -= 1
+    cursor.execute("""UPDATE question SET vote_number='{}' WHERE id={};""".format(vote_number, question_id))
+
+
 def main():
     pass
 
