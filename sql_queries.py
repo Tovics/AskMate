@@ -83,14 +83,13 @@ def delete_question(question_id):
     cursor.execute("""DELETE FROM question WHERE id='{}';""".format(question_id))
 
 
-def delete_answer(question_id, answer_id):
-    question_id = int(question_id)
-    answer_id = int(answer_id)
+def delete_answer(answer_id):
+    #answer_id = int(answer_id)
     connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
-    cursor.execute("""DELETE FROM answer WHERE question_id='{}', id='{}';""".format(question_id, answer_id))
+    cursor.execute("""DELETE FROM answer WHERE id={};""".format(answer_id))
 
 
 def main():

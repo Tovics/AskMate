@@ -45,12 +45,11 @@ def delete_question(question_id):
     return redirect(url_for('list_questions'))
 
 
-@app.route('/delete_answer/<question_id>', methods=['GET', 'POST'])
+@app.route('/question/<question_id>/delete_answer/<answer_id>', methods=['GET', 'POST'])
 def delete_answer(question_id, answer_id):
-    question_id = int(question_id)
     answer_id = int(answer_id)
-    sql_queries.delete_answer(question_id, answer_id)
-    return redirect(url_for('list_questions'))
+    sql_queries.delete_answer(answer_id)
+    return redirect('/question/{}'.format(question_id))
 
 
 @app.route('/question/<question_id>', methods=['GET', 'POST'])
