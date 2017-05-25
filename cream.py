@@ -79,15 +79,6 @@ def add_question():
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 
 
-"""def import_from_file(file_name="questions.csv"):
-    questions_list = []
-    with open(file_name, "r") as file_content:
-        questions = file_content.readlines()
-    for i in questions:
-        questions_list.append(i.replace('\n', '').split(', '))
-    return questions_list"""
-
-
 def main():
     app.run(debug=True)
     import_from_file()
