@@ -23,6 +23,14 @@ def list_questions():
     return render_template('list.html', question_list=ordered)
 
 
+@app.route('/search', methods=['GET', 'POST'])
+def search_questions():
+    search_request = request.form["search"]
+    search_request = search_request.lower()
+    search_results = sql_queries.search_in_questions(search_request)
+    return render_template('list.html', search_results=search_results)
+
+
 @app.route('/addquestion')
 def render_question():
     return render_template('form.html')

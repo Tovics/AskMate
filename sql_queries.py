@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def import_questions_from_db():
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -13,7 +13,7 @@ def import_questions_from_db():
 
 
 def import_answers_from_db(question_id):
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -25,7 +25,7 @@ def import_answers_from_db(question_id):
 
 def import_single_question_from_db(question_id):
     question_id = int(question_id)
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -35,7 +35,7 @@ def import_single_question_from_db(question_id):
 
 
 def insert_question(title='', message='', view_number=0, vote_number=0, image=''):
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn.autocommit = True
@@ -45,7 +45,7 @@ def insert_question(title='', message='', view_number=0, vote_number=0, image=''
 
 
 def insert_answer(question_id, answer='', vote_number=0, image=''):
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn.autocommit = True
@@ -55,7 +55,7 @@ def insert_answer(question_id, answer='', vote_number=0, image=''):
 
 
 def update_question(question_id, title, message):
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     conn.autocommit = True
@@ -64,7 +64,7 @@ def update_question(question_id, title, message):
 
 
 def sort_questions(criterium, ordering):
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -75,7 +75,7 @@ def sort_questions(criterium, ordering):
 
 def delete_question(question_id):
     question_id = int(question_id)
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
@@ -86,11 +86,22 @@ def delete_question(question_id):
 def delete_answer(question_id, answer_id):
     question_id = int(question_id)
     answer_id = int(answer_id)
-    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
     cursor.execute("""DELETE FROM answer WHERE id={};""".format(answer_id))
+
+
+def search_in_questions(search_request):
+    search_request = search_request.lower()
+    connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
+    conn = psycopg2.connect(connect_str)
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM question WHERE title LIKE '%{}%';""".format(search_request))
+    search_results = cursor.fetchall()
+    return search_results
 
 
 def main():
