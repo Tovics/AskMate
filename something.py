@@ -2,7 +2,7 @@ import psycopg2
 
 try:
     # setup connection string
-    connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91december30'"
+    connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
     # use our connection values to establish a connection
     conn = psycopg2.connect(connect_str)
     # set autocommit option, to do every query when we call it
