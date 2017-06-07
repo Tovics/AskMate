@@ -117,8 +117,9 @@ def add_user():
 
 
 @app.route("/user/<user_id>")
-def display_user():
-    sql_queries.import_single_user_from_db(user_id)
+def display_user(user_id):
+    user_data = sql_queries.import_single_user_from_db(user_id)
+    return render_template('display.html', user_data=user_data)
 
 
 def main():
