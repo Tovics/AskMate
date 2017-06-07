@@ -4,12 +4,19 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
+        connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
         return func(cursor, *args)
     return func_wrapper
+
+
+@connection_decorator
+def import_users_from_db(cursor):
+    cursor.execute("""SELECT * FROM users;""")
+    users_list = cursor.fetchall()
+    return users_list
 
 
 @connection_decorator
