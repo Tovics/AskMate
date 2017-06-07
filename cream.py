@@ -10,6 +10,11 @@ import sql_queries
 app = Flask(__name__)
 
 
+@app.route('/users')
+def list_users():
+    return render_template('user_list.html', user_list=sql_queries.import_users_from_db())
+
+
 @app.route('/')
 def list_questions():
     criterium = None
