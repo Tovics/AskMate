@@ -104,7 +104,7 @@ def vote_down(cursor, question_id):
 
 @connection_decorator
 def create_user(cursor, name, registration_time):
-    cursor.execute("""INSERT INTO "user" (name, registration_time)
+    cursor.execute("""INSERT INTO users (name, registration_time)
                             VALUES (%s, %s);""", (name, registration_time))
 
 
