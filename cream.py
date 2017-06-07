@@ -116,6 +116,11 @@ def add_user():
     return render_template('registration.html')
 
 
+@app.route("/user/<user_id>")
+def display_user():
+    sql_queries.import_single_user_from_db(user_id)
+
+
 def main():
     app.run(debug=True)
     import_from_file()
