@@ -28,7 +28,6 @@ def search_questions():
     search_request = request.form["search"]
     search_request = search_request.lower()
     search_results = sql_queries.search_in_questions(search_request)
-    print(search_results)
     return render_template('list.html', search_results=search_results)
 
 
@@ -82,7 +81,6 @@ def display_question(question_id):
 def add_question():
     question_title = request.form["question_title"]
     question_description = request.form["question_description"]
-    # questions_list = import_from_file()
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     sql_queries.insert_question(question_title, question_description)
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
@@ -98,6 +96,19 @@ def vote_up(question_id):
 def vote_down(question_id):
     sql_queries.vote_down(question_id)
     return redirect('/')
+
+
+@app.route("/registration")
+def register():
+    return render_template('registration.html')
+
+
+@app.route("/add_user_to_db", methods=['POST'])
+def add_user():
+    username = request.form["username"]
+    registration_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    sql_queries.create_user(username, registration_time)
+    return render_template('registration.html')
 
 
 def main():
