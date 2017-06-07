@@ -18,6 +18,12 @@ def import_users_from_db(cursor):
     users_list = cursor.fetchall()
     return users_list
 
+@connection_decorator
+def import_single_user_from_db(cursor, user_id):
+    cursor.execute("""SELECT * FROM users WHERE id = {}""".format(user_id))
+    user = cursor.fetchall()
+    return user
+
 
 @connection_decorator
 def import_questions_from_db(cursor):
