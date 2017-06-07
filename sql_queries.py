@@ -8,7 +8,6 @@ def connection_decorator(func):
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
-
         return func(cursor, *args)
     return func_wrapper
 

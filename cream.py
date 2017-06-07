@@ -28,7 +28,6 @@ def search_questions():
     search_request = request.form["search"]
     search_request = search_request.lower()
     search_results = sql_queries.search_in_questions(search_request)
-    print(search_results)
     return render_template('list.html', search_results=search_results)
 
 
@@ -82,8 +81,6 @@ def display_question(question_id):
 def add_question():
     question_title = request.form["question_title"]
     question_description = request.form["question_description"]
-    # questions_list = import_from_file()
-    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     sql_queries.insert_question(question_title, question_description)
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 
