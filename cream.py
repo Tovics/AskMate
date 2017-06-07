@@ -81,10 +81,7 @@ def display_question(question_id):
 def add_question():
     question_title = request.form["question_title"]
     question_description = request.form["question_description"]
-<<<<<<< HEAD
-=======
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
->>>>>>> registration
     sql_queries.insert_question(question_title, question_description)
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 

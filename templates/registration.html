@@ -2,12 +2,16 @@
 <html>
   <head>
     <title>AskM8 - Registration</title>
+    <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css')}}"/>
   </head>
-  <body>
+  <body class="cr_user">
       <h2>Sign Up</h2>
-        <form action="/add_user_to_db" method="POST">
+        <form id="cr_username" action="/add_user_to_db" method="POST">
             Enter a username: <p><input type="text" name="username" /></p>
             <p><input type="submit" value="submit"></p>
+        </form>
+        <form action="/" method="GET">
+            <p><input type="submit" value="back"></p>
         </form>
   </body>
 </html>
