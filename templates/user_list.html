@@ -8,10 +8,12 @@
 </head>
 <body>
     <table>
+        {%for tuple in user_list%}
         <tr>
-            <td></td>
-            <td></td>
+            <td><center>{{tuple[1]}}</center></td>
+            <td><center>{{tuple[2]}}</center></td>
         </tr>
+        {%endfor%}
     </table>
 </body>
 </html>
