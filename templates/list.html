@@ -3,23 +3,21 @@
 
 <head>
   <title>AskM8</title>
+  <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css')}}"/>
 </head>
 
-<body bgcolor="BDECB6">
+<body>
+  <a id="main_title" href="{{url_for('list_questions')}}"> AskM8</a>
   <a href="{{ url_for('render_question') }}">
-    <button>Ask new question</button>
+    <button id="ask">Ask new question</button>
   </a>
-  <p>
-    <a href="{{ url_for('register') }}">
+  <a id="user" href="{{ url_for('register') }}">
     <button>Create user</button>
   </a>
-  <p>
     <form action="/search" method="POST">
-      <p>Search in questions:<br/>
+      <p id="search">Search in questions:<br/>
         <input type="text" name="search" placeholder="Search...">
         <input type="submit" value="submit">
-        <!--<img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/search-128.png
-        " style="width:12px;height:12px; "></a>-->
       </p>
     </form>
   </p>

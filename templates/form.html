@@ -3,9 +3,10 @@
 
 <head>
     <title>AskM8</title>
+    <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css')}}"/>
 </head>
 
-<body style="background-color: #BDECB6">
+<body>
     {%if question_details%}
     <form action="/edit_question/{{question_details[0][0]}}" method="POST">
         <h2><b>Question title<b></h2>
@@ -14,7 +15,8 @@
                     <p><textarea name="question_description" rows="5" cols="42">{%if question_details%}{{question_details[0][5]}}{%endif%}</textarea></p>
                     <p><input type="submit" value="save changes"></p>
             {%else%}
-                <form action="/question" method="POST">
+            <h1 id="ask_q_title">Ask a question</h1>
+                <form id="ask_form" action="/question" method="POST">
                     <h2><b>Question title<b></h2>
                     <p><input value= "{%if question_details%}{{question_details[0][4]}}{%endif%}" type= "text" name= "question_title" size="42"></p> 
                     <h2><b>Question description<b></h2>
@@ -22,5 +24,8 @@
                     <p><input type="submit" value="submit"></p>
             {%endif%}
         </form>
+    <form action="/" method="GET">
+        <p><input type="submit" value="back"></p>
+    </form>
     </body>
 </html>

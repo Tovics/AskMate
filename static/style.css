@@ -1,3 +1,93 @@
-table{
-    background-color: black;
+table, th, td{
+    background-color: #cddc39;
+    border: 1px solid black;
+    width: 800px;
+    margin-top: 60px;
+}
+
+body {
+    background-color: #27a777;
+    align-content: center;
+}
+
+div {
+    border-style: solid black;
+}
+
+#add_answer {
+    position: absolute;
+    margin: 50px 440px;
+}
+
+#q_desc {
+    width: 790px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#q_date {
+    margin-left: 666px;
+}
+
+#answers {
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 20px;
+
+}
+
+#search {
+    position: static;
+    margin-left: 888px;
+    margin-top: 40px;
+}
+
+#user {
+    position: absolute;
+    margin-top: 71px;
+    margin-left: 330px;
+}
+
+#ask {
+    position: absolute;
+    margin-left: 165px;
+    margin-top: 70px;
+}
+
+#ask_form {
+    margin-left: 60px;
+    margin-top: 30px;
+    border: 2px;
+    color: gold;
+}
+
+.cr_user {
+    margin-left: 500px;
+    align-content: center;
+    margin-top: 50px;
+    color: gold;
+}
+
+
+#main_title {
+    font-family: sans-serif, Arial, Helvetica;
+    color: gold;
+    text-shadow: 11px 9px 12px black;
+    position: absolute;
+    margin-left: 170px;
+    margin-top: 8px;
+    font: 20pt;
+}
+
+#ask_q_title {
+    margin-left: 60px;
+    font: 14pt;
+
+}
+
+#back {
+    position: absolute;
+    margin-left: 750px;
+    margin-top: 250px;
+
 }
