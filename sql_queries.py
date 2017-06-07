@@ -4,7 +4,7 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+        connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
@@ -99,6 +99,12 @@ def vote_down(cursor, question_id):
     vote_number = int(vote_number[0])
     vote_number -= 1
     cursor.execute("""UPDATE question SET vote_number='{}' WHERE id={};""".format(vote_number, question_id))
+
+
+@connection_decorator
+def create_user(cursor, name, registration_time):
+    cursor.execute("""INSERT INTO users (name, registration_time)
+                            VALUES (%s, %s);""", (name, registration_time))
 
 
 def main():
