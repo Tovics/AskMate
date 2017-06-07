@@ -22,15 +22,15 @@ def import_users_from_db(cursor):
 def import_single_user_from_db(cursor, user_id):
     cursor.execute("""
                     SELECT users.name, users.registration_time, question.title, answer.message, comment.message FROM users
-                    LEFT JOIN quesgittion
-                    ON users.id = question.user_id
+                    LEFT JOIN question
+                    ON users.id = question.users_id
                     LEFT JOIN answer
-                    ON users.id = answer.user_id
+                    ON users.id = answer.users_id
                     LEFT JOIN comment
-                    ON users.id = comment.user_id
+                    ON users.id = comment.users_id
                     WHERE users.id = {};
                     """.format(user_id))
-    user = cursor.fetchall()
+    user_details = cursor.fetchall()
     return user_details
 
 
