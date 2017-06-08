@@ -4,7 +4,7 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
+        connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
@@ -65,7 +65,7 @@ def import_single_question_from_db(cursor, question_id):
 
 
 @connection_decorator
-def insert_question(cursor, title='', message='', view_number=0, vote_number=0, image='', users_id=2):
+def insert_question(cursor, title='', message='', users_id=0, view_number=0, vote_number=0, image=''):
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     cursor.execute("""INSERT INTO question (submission_time, view_number, vote_number, title, message, image, users_id)
                             VALUES (%s, %s, %s, %s, %s, %s, %s);""", (date, view_number, vote_number, title, message, image, users_id))
