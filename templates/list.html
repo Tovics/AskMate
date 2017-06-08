@@ -41,7 +41,10 @@
         <a href="{{ url_for('list_questions', submission_time='asc')}}"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-128.png" style="width:15px;height:15px;"></a>
       </th>
       <th>
-        <center></center>
+        <center>Edit/Delete</center>
+      </th>
+       <th>
+        <center>Accepted</center>
       </th>
     </tr>
     {%if search_results%} {%for tupple in search_results%}
