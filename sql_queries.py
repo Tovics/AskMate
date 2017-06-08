@@ -105,12 +105,9 @@ def search_in_questions(cursor, search_request):
     return search_results
 
 
-# @connection_decorator
-# def accept_question(cursor, question_id):
-#    cursor.execute("""SELECT vote_number FROM question WHERE id={};""".format(question_id))
-#    accepted = cursor.fetchone()
-#    accepted = False
-#    cursor.execute("""UPDATE question SET vote_number='{}' WHERE id={};""".format(vote_number, question_id))
+@connection_decorator
+def accept_answer(cursor, answer_id):
+    cursor.execute("""UPDATE answer SET accepted = 'TRUE' WHERE id={};""".format(answer_id))
 
 
 @connection_decorator

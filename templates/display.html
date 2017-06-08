@@ -24,8 +24,8 @@
                 <td><center>{{tupple[1]}}</center></td>
                 <td><center>{{tupple[2]}}</center></td>
                 <td><center>{{tupple[0]}}</center></td>
-                <td><a href="{{url_for('delete_answer', question_id=question_id, answer_id=tupple[0])}}" method='POST'><center>Delete</center></a></td>
-                <td><a href="{{url_for('accept_answer', question_id=question_id, answer_id=tupple[5])}}" method='POST'><center>Accept</center></a></td>
+                <td><a href="{{url_for('delete_answer', question_id=question_id, answer_id=tupple[0])}}" method='POST'>Delete</a></td>
+                <td><a href="{{url_for('accept_answer', answer_id=tupple[0])}}" method='POST'>Accept</a></td>
             </tr>
             {%endfor%}
         {%else%}
