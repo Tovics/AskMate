@@ -4,7 +4,7 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
+        connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
@@ -46,13 +46,13 @@ def import_questions_from_db(cursor):
 def import_answers_from_db(cursor, question_id):
     cursor.execute("""SELECT * FROM answer WHERE question_id=%s;""", (question_id,))
     answer = cursor.fetchall()
-    return answer0
+    return answer
 
 
 @connection_decorator
 def import_single_question_from_db(cursor, question_id):
     question_id = int(question_id)
-    cursor.execute("""SELECT * FROM question WHERE user_id='%s';""", (question_id,))
+    cursor.execute("""SELECT * FROM question WHERE id='%s';""", (question_id,))
     question = cursor.fetchall()
     return question
 
