@@ -34,6 +34,24 @@
             </tr>
         {%endif%}
     </table>
+    <form action="/question/{{question_id}}/new-comment" method="POST">
+        <textarea name="comment" id="" cols="30" rows="3"></textarea>
+        <input type="submit" value="Send Comment">
+    </form>
+    {%if comments%}
+    <table>
+        {%for comment in comments%}
+        <tr>
+            <td>
+                {{comment[0]}}
+            </td>
+            <td>
+                {{comment[1]}}
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+    {%endif%}
     <p id="add_answer_q">Add a new answer:</p>
     <p>
         <form id="add_answer" action="/question/{{question_id}}" method="POST">
