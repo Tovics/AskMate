@@ -121,6 +121,13 @@ def display_user(user_id):
     return render_template('user_display.html', user_details=sql_queries.import_single_user_from_db(user_id))
 
 
+@app.route("/question/<question_id>/new-comment", methods=['GET', 'POST'])
+def add_comment_to_question(question_id):
+    comment = request.form["comment"]
+    sql_queries.add_comment_to_question(question_id, comment)
+    return redirect("/question/{}".format(question_id))
+
+
 def main():
     app.run(debug=True)
     import_from_file()
