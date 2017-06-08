@@ -5,7 +5,15 @@
     <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css')}}"/>
 </head>
 <body>
-    <table>
+    <h2 id="reg_us">User page</h2>
+    <table class="display_table" border="1" align="center" style="width:60%">
+        <tr>
+            <td><strong>Username</center></td>
+            <td><strong>Creation date</center></td>
+            <td><strong>Questions asked</center></td>
+            <td><strong>Answers gave</center></td>
+            <td><strong>Comments added</center></td>
+        </tr>
         {%for tupple in user_details%}
         <tr>
             <td>{{tupple[0]}}</td>
@@ -16,5 +24,8 @@
         </tr>
         {%endfor%}
     </table>
+    <a id="back_button" href="{{url_for('list_questions')}}">
+            <button>Back</button>
+        </a>
 </body>
 </html>

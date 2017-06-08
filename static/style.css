@@ -48,6 +48,12 @@ div {
 
 }
 
+#back_button { 
+    position: relative;
+    margin-left: 888px;
+    margin-top: 80px;
+}
+
 .q_detail {
     background-color: #a55f5f;
     padding: 5px 5px;
