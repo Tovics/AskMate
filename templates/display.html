@@ -37,7 +37,12 @@
     <div class="comment_section"><form action="/question/{{question_id}}/new-comment" method="POST">
         <p>Comment section</p>
         <textarea name="comment" id="" cols="30" rows="3"></textarea>
-        <input type="submit" value="Send Comment">
+        <select id="comm_usr_select" name="users_name_comm">
+                {%for data in users_ordered%}
+                <option>{{data[0]}}</option>
+                {%endfor%}
+        </select>
+        <input id="send_comment" type="submit" value="Send Comment">
     </form>
     {%if comments%}
     <table id="comment_table" border="1" align="left" style="width:70%">

@@ -153,14 +153,22 @@ def create_user(cursor, name, registration_time):
 
 
 @connection_decorator
-def add_comment_to_question(cursor, question_id, message):
+def add_comment_to_question(cursor, question_id, message, users_id=0):
     submission_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     cursor.execute(
         """
         INSERT INTO comment
         (question_id, answer_id, message, submission_time, edited_count, users_id)
-        VALUES (%s, NULL, %s, %s, NULL, NULL);
-        """, (question_id, message, submission_time))
+        VALUES (%s, NULL, %s, %s, NULL, %s);
+        """, (question_id, message, submission_time, users_id))
+
+
+@connection_decorator
+def import_single_user_from_db_comm_bind(cursor, users_name_comm):
+    cursor.execute("""SELECT id FROM users WHERE name='{}';""".format(users_name_comm))
+    single_user = cursor.fetchall()
+    single_user_comm = single_user[0][0]
+    return single_user_comm
 
 
 @connection_decorator

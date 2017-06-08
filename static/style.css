@@ -96,7 +96,16 @@ div {
 #comment_table {
     position: absolute;
     margin-top: 50px;
+}
+#comm_usr_select {
+    position: absolute;
+    margin-top: 0px;
+}
 
+#send_comment {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 155px;
 }
 #search {
     position: static;
