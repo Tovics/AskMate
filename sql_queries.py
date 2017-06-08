@@ -182,7 +182,7 @@ def import_comments_for_question(cursor, question_id):
         """
         SELECT message, submission_time
         FROM comment
-        WHERE question_id = {};
+        WHERE question_id = {} AND answer_id is NULL;
         """.format(question_id)
     )
     comment = cursor.fetchall()
@@ -190,18 +190,31 @@ def import_comments_for_question(cursor, question_id):
 
 
 @connection_decorator
-def add_comment_to_answer(cursor, answer_id, users_id, message):
+def add_comment_to_answer(cursor, question_id, answer_id, users_id, message):
     submission_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     cursor.execute(
         """
         INSERT INTO comment
         (question_id, answer_id, message, submission_time, edited_count, users_id)
-        VALUES (NULL, %s, %s, %s, NULL, %s);
-        """, (answer_id, message, submission_time, users_id))
+        VALUES (%s, %s, %s, %s, NULL, %s);
+        """, (question_id, answer_id, message, submission_time, users_id))
+
+
+@connection_decorator
+def import_comments_for_answer(cursor):
+    cursor.execute(
+        """
+        SELECT message, submission_time
+        FROM comment
+        WHERE answer_id is NOT NULL;
+        """
+    )
+    answer_comment = cursor.fetchall()
+    return answer_comment
 
 
 def main():
-    print(import_single_user_from_db_ordered('Tarzan'))
+    print(import_comments_for_answer(0))
 
 if __name__ == '__main__':
     main()

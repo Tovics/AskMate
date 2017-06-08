@@ -58,8 +58,8 @@ DROP TABLE IF EXISTS public.comment;
 DROP SEQUENCE IF EXISTS public.comment_id_seq;
 CREATE TABLE comment (
     id serial NOT NULL,
-    question_id integer,
-    answer_id integer,
+    question_id integer DEFAULT NULL,
+    answer_id integer DEFAULT NULL,
     message text,
     submission_time timestamp without time zone,
     edited_count integer,

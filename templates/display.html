@@ -23,7 +23,11 @@
                 <td><center>{{tupple[4]}}</center>
                     <table>
                         <tr>
-                            <td>pina</td>
+                            <td>
+                                {%if answer_comment %}
+                                    {{answer_comment[1][0]}}
+                                {%endif%}
+                            </td>
                         </tr>
                         <tr>
                             <td>

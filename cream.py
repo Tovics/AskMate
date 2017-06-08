@@ -68,13 +68,13 @@ def delete_answer(question_id, answer_id):
 def display_question(question_id):
     questions_details = sql_queries.import_single_question_from_db(question_id)
     answer_details = sql_queries.import_answers_from_db(question_id)
-    comments = sql_queries.import_comments_for_question(question_id)
+    question_comments = sql_queries.import_comments_for_question(question_id)
+    answer_comment = sql_queries.import_comments_for_answer()
     question_date = questions_details[0][1]
     question_title = questions_details[0][4]
     question_id = int(questions_details[0][0])
     question_description = questions_details[0][5]
     users_ordered = sql_queries.import_users_from_db_ordered()
-
     if request.method == 'POST':
         answer = request.form["answer"]
         users_name_answ = request.form["users_name_answ"]
@@ -82,7 +82,7 @@ def display_question(question_id):
         sql_queries.insert_answer(question_id, answer, users_id_answ)
         return redirect('/question/{}'.format(question_id))
     else:
-        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details, comments=comments, users_ordered=users_ordered)
+        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details, comments=question_comments, users_ordered=users_ordered, answer_comment=answer_comment)
 
 
 @app.route("/question", methods=['POST'])
@@ -146,7 +146,7 @@ def add_comment_to_answer(answer_id, question_id):
     comment = request.form["answer_comment_textarea"]
     users_name_answer_comment = request.form["users_name_ans_comm"]
     users_id = sql_queries.import_single_user_from_db_comm_bind(users_name_answer_comment)
-    sql_queries.add_comment_to_answer(answer_id, users_id, comment)
+    sql_queries.add_comment_to_answer(question_id, answer_id, users_id, comment)
     return redirect("/question/{}".format(question_id))
 
 
