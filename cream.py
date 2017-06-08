@@ -121,6 +121,11 @@ def display_user(user_id):
     return render_template('user_display.html', user_details=sql_queries.import_single_user_from_db(user_id))
 
 
+@app.route("/question/<question_id>/new-comment")
+def add_new_comment(question_id):
+    comment = request.form[""]
+
+
 def main():
     app.run(debug=True)
     import_from_file()

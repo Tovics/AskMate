@@ -34,6 +34,17 @@
             </tr>
         {%endif%}
     </table>
+    <form action="/question/<question_id>/new-comment, question_id={{question_id}}" method="POST">
+        <textarea name="" id="" cols="30" rows="3"></textarea>
+        <input type="submit" value="Send Comment">
+    </form>
+    <table>
+        <tr>
+            <td>
+                comments
+            </td>
+        </tr>
+    </table>
     <p id="add_answer_q">Add a new answer:</p>
     <p>
         <form id="add_answer" action="/question/{{question_id}}" method="POST">
