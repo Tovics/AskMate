@@ -129,6 +129,11 @@ def create_user(cursor, name, registration_time):
                             VALUES (%s, %s);""", (name, registration_time))
 
 
+@connection_decorator
+def add_comment_to_question(cursor, message):
+    cursor.execute("""""")
+
+
 def main():
     pass
 

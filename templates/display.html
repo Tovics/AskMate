@@ -34,8 +34,8 @@
             </tr>
         {%endif%}
     </table>
-    <form action="/question/<question_id>/new-comment, question_id={{question_id}}" method="POST">
-        <textarea name="" id="" cols="30" rows="3"></textarea>
+    <form action="/question/{{question_id}}/new-comment" method="POST">
+        <textarea name="comment" id="" cols="30" rows="3"></textarea>
         <input type="submit" value="Send Comment">
     </form>
     <table>
