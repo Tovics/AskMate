@@ -24,7 +24,19 @@
         </tr>
         {%endfor%}
     </table>
-    <a id="back_button" href="{{url_for('list_questions')}}">
+    <table class="display_table" border="1" align="center" style="width:60%">
+        <tr>
+            <td><strong>Question title</center></td>
+            <td><strong>Answers gave</center></td>
+        </tr>
+        {%for tupple in user_details%}
+        <tr>
+            <td></td>
+            <td>{{tupple[3]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <a id="back_button" href="{{url_for('list_users')}}">
             <button>Back</button>
         </a>
 </body>
