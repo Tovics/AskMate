@@ -4,7 +4,7 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+        connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
