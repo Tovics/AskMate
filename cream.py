@@ -91,6 +91,12 @@ def add_question():
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 
 
+@app.route("/accept/<question_id>")
+def accept_answer(question_id):
+    sql_queries.vote_up(question_id)
+    return redirect('/')
+
+
 @app.route("/vote_up/<question_id>")
 def vote_up(question_id):
     sql_queries.vote_up(question_id)
