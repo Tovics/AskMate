@@ -11,10 +11,11 @@
     <h2>
         <p>{{question_id}}. {{title}}</p>
     </h2>
-    <div id="q_desc">{{message}}</div>
+    <p id="details">Details: </p>
+    <div class="q_detail" id="q_desc">{{message}}</div>
     <p id="q_date">{{date}}</p>
     <h3 id="answers">Answers: </h3>
-    <table>
+    <table class="display_q_details_table">
         {%if answer_details%}
             {%for tupple in answer_details%}
             <tr>
@@ -33,7 +34,7 @@
             </tr>
         {%endif%}
     </table>
-    <p id="add_answer">Add a new answer:</p>
+    <p id="add_answer_q">Add a new answer:</p>
     <p>
         <form id="add_answer" action="/question/{{question_id}}" method="POST">
             <textarea name="answer" rows="5" cols="42"></textarea><br>

@@ -21,7 +21,10 @@
       </p>
     </form>
   </p>
-  <table border="1" align="center" style="width:75%">
+  <a id="user_list" href="{{url_for('list_users')}}">
+      <button>Users list</button>
+    </a>
+  <table class="display_table" border="1" align="center" style="width:75%">
     <tr>
       <th>
         <center>ID</center>
@@ -90,9 +93,6 @@
     {%endfor%} {%endif%}
   </table>
   </p>
-    <a href="{{url_for('list_users')}}">
-      <button>Users list</button>
-    </a>
 </body>
 
 </html>

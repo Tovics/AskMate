@@ -1,8 +1,19 @@
-table, th, td{
+
+.display_table {
     background-color: #cddc39;
     border: 1px solid black;
     width: 800px;
     margin-top: 60px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+
+.display_q_details_table {
+    background-color: #cddc39;
+    border: 1px solid black;
+    width: 800px;
+    margin-top: 60px;
+    margin-bottom: 10px;
 }
 
 body {
@@ -16,9 +27,19 @@ div {
 
 #add_answer {
     position: absolute;
-    margin: 50px 440px;
+    margin: 40px 440px;
 }
 
+#add_answer_q {
+    position: absolute;
+    margin: 30px 440px;
+}
+
+.q_detail {
+    background-color: #a55f5f;
+    padding: 0px 5px;
+    width: 800px;
+}
 #q_desc {
     width: 790px;
     border: 1px solid black;
@@ -33,7 +54,13 @@ div {
     position: absolute;
     margin-left: 5px;
     margin-top: 20px;
+}
 
+#details {
+    position: absolute;
+    margin-left: 5px;
+    margin-top: -20px;
+    font: 13pt;
 }
 
 #search {
@@ -42,16 +69,27 @@ div {
     margin-top: 40px;
 }
 
+#ask {
+    position: absolute;
+    margin-left: 165px;
+    margin-top: 70px;
+}
+
 #user {
     position: absolute;
     margin-top: 71px;
     margin-left: 330px;
 }
 
-#ask {
+#user_list {
     position: absolute;
-    margin-left: 165px;
-    margin-top: 70px;
+    margin-left: 470px;
+    margin-top: 17px; 
+}
+
+#reg_us {
+    margin-left: 160px;
+    color: gold;
 }
 
 #ask_form {
@@ -61,11 +99,17 @@ div {
     color: gold;
 }
 
+#awesome_button {
+    margin-left: 760px;
+    margin-top: 60px;
+}
+
 .cr_user {
     margin-left: 500px;
     align-content: center;
     margin-top: 50px;
     color: gold;
+    font: 16pt;
 }
 
 
