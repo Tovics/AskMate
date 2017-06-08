@@ -140,6 +140,19 @@ def add_comment_to_question(cursor, question_id, message):
         """, (question_id, message, submission_time))
 
 
+@connection_decorator
+def import_comments_for_question(cursor, question_id):
+    cursor.execute(
+        """
+        SELECT message, submission_time
+        FROM comment
+        WHERE question_id = {};
+        """.format(question_id)
+    )
+    comment = cursor.fetchall()
+    return comment
+
+
 def main():
     pass
 

@@ -69,6 +69,7 @@ def delete_answer(question_id, answer_id):
 def display_question(question_id):
     questions_details = sql_queries.import_single_question_from_db(question_id)
     answer_details = sql_queries.import_answers_from_db(question_id)
+    comments = sql_queries.import_comments_for_question(question_id)
     question_date = questions_details[0][1]
     question_title = questions_details[0][4]
     question_id = int(questions_details[0][0])
@@ -79,7 +80,7 @@ def display_question(question_id):
         sql_queries.insert_answer(question_id, answer)
         return redirect('/question/{}'.format(question_id))
     else:
-        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details)
+        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details, comments=comments)
 
 
 @app.route("/question", methods=['POST'])
