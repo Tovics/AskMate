@@ -21,14 +21,15 @@
                     <p><input value= "{%if question_details%}{{question_details[0][4]}}{%endif%}" type= "text" name= "question_title" size="42"></p> 
                     <h2><b>Question description<b></h2>
                     <p><textarea name="question_description" rows="5" cols="42">{%if question_details%}{{question_details[0][5]}}{%endif%}</textarea></p>
-                    <select name="bind_user_q">
+                    <select name="users_name">
                     {%for data in users_ordered%}
-                        <option>{{data[1]}}</option>
+                        <option>{{data[0]}}</option>
                     {%endfor%}
                     </select>
                     <p><input type="submit" value="submit"></p>
             {%endif%}
-        </form>
+               </form>
+    </form>
     <form action="/" method="GET">
         <p><input type="submit" value="Back"></p>
     </form>

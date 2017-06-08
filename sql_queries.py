@@ -27,6 +27,13 @@ def import_users_from_db_ordered(cursor):
 
 
 @connection_decorator
+def import_single_user_from_db_ordered(cursor, users_name):
+    cursor.execute("""SELECT id FROM users WHERE name='{}';""".format(users_name))
+    single_user = cursor.fetchall()
+    return single_user
+
+
+@connection_decorator
 def import_single_user_from_db(cursor, user_id):
     cursor.execute("""
                     SELECT users.name, users.registration_time, question.title, answer.message, comment.message FROM users
@@ -65,7 +72,7 @@ def import_single_question_from_db(cursor, question_id):
 
 
 @connection_decorator
-def insert_question(cursor, title='', message='', view_number=0, vote_number=0, image='', users_id=2):
+def insert_question(cursor, title='', message='', users_id=0, view_number=0, vote_number=0, image=''):
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     cursor.execute("""INSERT INTO question (submission_time, view_number, vote_number, title, message, image, users_id)
                             VALUES (%s, %s, %s, %s, %s, %s, %s);""", (date, view_number, vote_number, title, message, image, users_id))
@@ -137,7 +144,7 @@ def create_user(cursor, name, registration_time):
 
 
 def main():
-    pass
+    print(import_single_user_from_db('borz'))
 
 if __name__ == '__main__':
     main()

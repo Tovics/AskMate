@@ -86,7 +86,8 @@ def display_question(question_id):
 def add_question():
     question_title = request.form["question_title"]
     question_description = request.form["question_description"]
-    users_id = request.form["bind_user_q"]
+    users_name = request.form["users_name"]
+    users_id = sql_queries.import_single_user_from_db(users_name)
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     sql_queries.insert_question(question_title, question_description, users_id)
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
