@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        {%for tupple in user_details%}
+        <tr>
+            <td>{{tupple[0]}}</td>
+            <td>{{tupple[1]}}</td>
+            <td>{{tupple[2]}}</td>
+            <td>{{tupple[3]}}</td>
+            <td>{{tupple[4]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>

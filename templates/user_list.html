@@ -13,8 +13,8 @@
         </tr>
         {%for tuple in user_list%}
         <tr>
+            <td><center><a href="{{ url_for( 'display_user', user_id=tuple[0]) }} ">{{tuple[2]}}</a></center></td>
             <td><center>{{tuple[1]}}</center></td>
-            <td><center>{{tuple[2]}}</center></td>
         </tr>
         {%endfor%}
     </table>
