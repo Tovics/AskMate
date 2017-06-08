@@ -19,11 +19,13 @@
         {%if answer_details%}
             {%for tupple in answer_details%}
             <tr>
-                <td>{{tupple[0]}}</td>
-                <td>{{tupple[4]}}</td>
-                <td>{{tupple[1]}}</td>
-                <td>{{tupple[2]}}</td>
-                <td><a href="{{url_for('delete_answer', question_id=question_id, answer_id=tupple[0])}}" method='POST'>delete</a></td>
+                <td><center>{{tupple[0]}}</center></td>
+                <td><center>{{tupple[4]}}</center></td>
+                <td><center>{{tupple[1]}}</center></td>
+                <td><center>{{tupple[2]}}</center></td>
+                <td><center>{{tupple[0]}}</center></td>
+                <td><a href="{{url_for('delete_answer', question_id=question_id, answer_id=tupple[0])}}" method='POST'>Delete</a></td>
+                <td><a href="{{url_for('accept_answer', answer_id=tupple[0])}}" method='POST'>Accept</a></td>
             </tr>
             {%endfor%}
         {%else%}
