@@ -58,6 +58,11 @@
     <p>
         <form id="add_answer" action="/question/{{question_id}}" method="POST">
             <textarea name="answer" rows="5" cols="42"></textarea><br>
+            <select name="users_name_answ">
+                {%for data in users_ordered%}
+                <option>{{data[0]}}</option>
+                {%endfor%}
+            </select>
             <p><input type="submit" value="submit"></p>
         </form>
     </p>

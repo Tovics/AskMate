@@ -35,6 +35,14 @@ def import_single_user_from_db_ordered(cursor, users_name):
 
 
 @connection_decorator
+def import_single_user_from_db_answ_bind(cursor, users_name_answ):
+    cursor.execute("""SELECT id FROM users WHERE name='{}';""".format(users_name_answ))
+    single_user = cursor.fetchall()
+    single_user_answ = single_user[0][0]
+    return single_user_answ
+
+
+@connection_decorator
 def import_single_user_from_db(cursor, user_id):
     cursor.execute("""
                     SELECT users.name, users.registration_time, question.title, answer.message, comment.message FROM users
@@ -80,10 +88,10 @@ def insert_question(cursor, title='', message='', users_id=0, view_number=0, vot
 
 
 @connection_decorator
-def insert_answer(cursor, question_id, answer='', vote_number=0, image=''):
+def insert_answer(cursor, question_id, answer='', users_id_answ=0, vote_number=0, image=''):
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    cursor.execute("""INSERT INTO answer (submission_time, vote_number, question_id, message, image)
-                            VALUES (%s, %s, %s, %s, %s);""", (date, vote_number, question_id, answer, image))
+    cursor.execute("""INSERT INTO answer (submission_time, vote_number, question_id, message, image, users_id)
+                            VALUES (%s, %s, %s, %s, %s, %s);""", (date, vote_number, question_id, answer, image, users_id_answ))
 
 
 @connection_decorator

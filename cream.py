@@ -73,13 +73,16 @@ def display_question(question_id):
     question_title = questions_details[0][4]
     question_id = int(questions_details[0][0])
     question_description = questions_details[0][5]
+    users_ordered = sql_queries.import_users_from_db_ordered()
 
     if request.method == 'POST':
         answer = request.form["answer"]
-        sql_queries.insert_answer(question_id, answer)
+        users_name_answ = request.form["users_name_answ"]
+        users_id_answ = sql_queries.import_single_user_from_db_answ_bind(users_name_answ)
+        sql_queries.insert_answer(question_id, answer, users_id_answ)
         return redirect('/question/{}'.format(question_id))
     else:
-        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details, comments=comments)
+        return render_template('display.html', question_id=question_id, date=question_date, message=question_description, title=question_title, answer_details=answer_details, comments=comments, users_ordered=users_ordered)
 
 
 @app.route("/question", methods=['POST'])
