@@ -4,7 +4,7 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='tovics' user='tovics' host='localhost' password='88Szekér99'"
+        connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
@@ -130,8 +130,14 @@ def create_user(cursor, name, registration_time):
 
 
 @connection_decorator
-def add_comment_to_question(cursor, message):
-    cursor.execute("""""")
+def add_comment_to_question(cursor, question_id, message):
+    submission_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    cursor.execute(
+        """
+        INSERT INTO comment
+        (question_id, answer_id, message, submission_time, edited_count, users_id)
+        VALUES (%s, NULL, %s, %s, NULL, NULL);
+        """, (question_id, message, submission_time))
 
 
 def main():
