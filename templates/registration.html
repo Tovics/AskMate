@@ -10,8 +10,8 @@
             Enter a username: <p><input type="text" name="username" /></p>
             <p><input type="submit" value="submit"></p>
         </form>
-        <form action="/" method="GET">
-            <p><input type="submit" value="back"></p>
-        </form>
+        <a href="{{url_for('list_questions')}}">
+            <button>Back</button>
+        </a>
   </body>
 </html>

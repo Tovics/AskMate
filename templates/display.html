@@ -9,13 +9,13 @@
 
 <body>
     <h2>
-        <p>{{question_id}}. {{title}}</p>
+        <p id="q_title">{{question_id}}. {{title}}</p>
     </h2>
     <p id="details">Details: </p>
     <div class="q_detail" id="q_desc">{{message}}</div>
     <p id="q_date">{{date}}</p>
     <h3 id="answers">Answers: </h3>
-    <table class="display_q_details_table">
+    <table class="display_q_details_table" border="1" align="left" style="width:64%">
         {%if answer_details%}
             {%for tupple in answer_details%}
             <tr>
@@ -41,9 +41,9 @@
             <p><input type="submit" value="submit"></p>
         </form>
     </p>
-    <form id="back" action="/" method="GET">
-        <p><input type="submit" value="back"></p>
-    </form>
+    <a id="back" href="{{url_for('list_questions')}}">
+            <button>Back</button>
+        </a>
 
 </body>
 

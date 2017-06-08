@@ -11,9 +11,10 @@
 .display_q_details_table {
     background-color: #cddc39;
     border: 1px solid black;
-    width: 800px;
+    width: 900px;
     margin-top: 60px;
     margin-bottom: 10px;
+    margin-left: 5px;
 }
 
 body {
@@ -24,26 +25,40 @@ body {
 div {
     border-style: solid black;
 }
+#q_title {
+    margin-bottom: 10px;
+    padding: 10px;
+}
 
 #add_answer {
-    position: absolute;
-    margin: 40px 440px;
+    position: relative;
+    margin: 10px 470px;
 }
 
 #add_answer_q {
-    position: absolute;
-    margin: 30px 440px;
+    position: relative;
+    margin: 200px 470px;
+    margin-bottom: 0px;
+}
+
+#back {
+    position: relative;
+    margin-left: 777px;
+    margin-top: 80px;
+
 }
 
 .q_detail {
     background-color: #a55f5f;
-    padding: 0px 5px;
-    width: 800px;
+    padding: 5px 5px;
+    width: 67%;
+    margin-left: 10px;
 }
 #q_desc {
     width: 790px;
     border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
+    margin-left: 8px;
 }
 
 #q_date {
@@ -126,12 +141,5 @@ div {
 #ask_q_title {
     margin-left: 60px;
     font: 14pt;
-
-}
-
-#back {
-    position: absolute;
-    margin-left: 750px;
-    margin-top: 250px;
 
 }

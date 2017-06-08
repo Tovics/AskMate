@@ -38,7 +38,7 @@ def search_questions():
 
 @app.route('/addquestion')
 def render_question():
-    return render_template('form.html')
+    return render_template('form.html', users_ordered=sql_queries.import_users_from_db_ordered())
 
 
 @app.route('/edit_question/<question_id>', methods=['GET', 'POST'])
@@ -86,8 +86,9 @@ def display_question(question_id):
 def add_question():
     question_title = request.form["question_title"]
     question_description = request.form["question_description"]
+    users_id = request.form["bind_user_q"]
     date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    sql_queries.insert_question(question_title, question_description)
+    sql_queries.insert_question(question_title, question_description, users_id)
     return render_template('list.html', question_list=sql_queries.import_questions_from_db())
 
 
