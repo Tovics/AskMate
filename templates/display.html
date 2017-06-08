@@ -20,10 +20,30 @@
             {%for tupple in answer_details%}
             <tr>
                 <td><center>{{tupple[0]}}</center></td>
-                <td><center>{{tupple[4]}}</center></td>
+                <td><center>{{tupple[4]}}</center>
+                    <table>
+                        <tr>
+                            <td>pina</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="answer_comment">
+                                    <form action="/question/{{question_id}}/{{tupple[0]}}/new-comment" method="POST">
+                                    <textarea name="answer_comment_textarea" id="" cols="30" rows="1"></textarea><br>
+                                    <select id="ans_comm_usr_select" name="users_name_ans_comm">
+                                            {%for data in users_ordered%}
+                                            <option>{{data[0]}}</option>
+                                            {%endfor%}
+                                    </select>
+                                    <input id="send_comment" type="submit" value="Send Comment">
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
                 <td><center>{{tupple[1]}}</center></td>
                 <td><center>{{tupple[2]}}</center></td>
-                <td><center>{{tupple[0]}}</center></td>
                 <td><a href="{{url_for('delete_answer', question_id=question_id, answer_id=tupple[0])}}" method='POST'>Delete</a></td>
                 <td><a href="{{url_for('accept_answer', answer_id=tupple[0])}}" method='POST'>Accept</a></td>
             </tr>

@@ -141,6 +141,15 @@ def add_comment_to_question(question_id):
     return redirect("/question/{}".format(question_id))
 
 
+@app.route("/question/<question_id>/<answer_id>/new-comment", methods=['GET', 'POST'])
+def add_comment_to_answer(answer_id, question_id):
+    comment = request.form["answer_comment_textarea"]
+    users_name_answer_comment = request.form["users_name_ans_comm"]
+    users_id = sql_queries.import_single_user_from_db_comm_bind(users_name_answer_comment)
+    sql_queries.add_comment_to_answer(answer_id, users_id, comment)
+    return redirect("/question/{}".format(question_id))
+
+
 def main():
     app.run(debug=True)
     import_from_file()
