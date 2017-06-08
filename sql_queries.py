@@ -4,7 +4,7 @@ from datetime import datetime
 
 def connection_decorator(func):
     def func_wrapper(*args):
-        connect_str = "dbname='borzfele' user='borzfele' host='localhost' password='91_december_30'"
+        connect_str = "dbname='zsofi' user='zsofi' host='localhost' password='pwd'"
         conn = psycopg2.connect(connect_str)
         conn.autocommit = True
         cursor = conn.cursor()
@@ -30,6 +30,7 @@ def import_users_from_db_ordered(cursor):
 def import_single_user_from_db_ordered(cursor, users_name):
     cursor.execute("""SELECT id FROM users WHERE name='{}';""".format(users_name))
     single_user = cursor.fetchall()
+    single_user = single_user[0][0]
     return single_user
 
 
@@ -144,7 +145,7 @@ def create_user(cursor, name, registration_time):
 
 
 def main():
-    print(import_single_user_from_db('borz'))
+    print(import_single_user_from_db_ordered('Tarzan'))
 
 if __name__ == '__main__':
     main()
